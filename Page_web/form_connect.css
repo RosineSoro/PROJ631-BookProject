@@ -1,0 +1,53 @@
+body{
+	font-family: Noto Sans, sans-serif;
+	
+
+
+}
+h1{
+	text-align: left;
+}
+
+#content{
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+#connect{
+	display-flex: flex;
+
+}
+#form_connect{
+	display: flex;
+	flex-direction: column;
+	margin-left: auto;
+	margin-right : auto;
+
+	width: 10%;
+}
+#form_connect input{
+	margin:3% 0% 3% 0%;
+	border-radius: 5px ;
+	height: 30px;
+	width: 160px;
+	border-width: 1px;
+	font-size: 1.1em;
+
+}
+
+#form_connect button{
+	height: 25px;
+	font-size: 1.05em;
+}
+
+#create_account{
+	text-decoration: none;
+	color:grey;
+
+}
+a img{
+	width:50px;
+}
+
