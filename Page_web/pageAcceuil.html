@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+
+<html lang="fr"> 
+
+  
+
+   <head>
+		  <title>Page d'accueil</title>
+	
+		  <!--definition de l encodage-->
+		  <meta charset="UTF-8">
+		  <!--mise en lien du fichier html avec le fichier css-->
+		  <link rel="stylesheet" type="text/css" href="pageAcceuil.css">
+		  <!--recuperer l'icone de recherche-->
+	      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head> 
+
+   <body>
+   
+        <div id="container">
+		
+        <h3>Titre</h3>   
+        
+		<div class="search-container">
+			  <form class="search" action="#" method="GET">
+				<input type="text" class="search-bar" placeholder="Titre,Thèmes,Livres,..." name="search">
+				<button type="submit" class="search-button" name="submitSearch"><i class="fa fa-search"></i></button>
+			  </form>	
+        </div>
+		
+		<div class="dropdown">
+			  <button class="dropbtn">
+			     <span>Découvrir </span>
+			     <i class="fa fa-caret-down"></i>
+			  </button>
+			  <div class="dropdown-content">
+					<a href="#">Livres</a>
+					<a href="#">Thèmes</a>
+					<a href="#">Tendance</a>
+					<a href="#">Récents</a>
+              </div>
+        </div>
+		
+		<div class="user-container">
+		      <button type = "submit" name = "submitConnection">
+			  <i class="fa fa-user icon"></i>
+			  Se connecter
+			  </button>
+         </div>
+   </body>
+
+
+</html>
+

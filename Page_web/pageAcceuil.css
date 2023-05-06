@@ -1,0 +1,100 @@
+body{
+	font-family: Noto Sans, sans-serif;
+
+	
+}
+
+#container{
+	display:flex;
+	flex-direction:row;
+	width : 100%;
+	padding: 20px;
+	margin: 25px auto;
+	justify-content: center;
+	align-items: center;
+		
+}
+
+.dropbtn {
+  background-color:skyblue;
+  color: white;
+  padding: 16px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  border: none;
+  margin:15px;
+  margin-top:15px;
+  height: 10px;
+  
+  
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #0b7dda;}
+
+form.search {
+  display: flex;
+  align-items: center;
+}
+
+form.search input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid grey;
+  border-right: none;
+  height: 10px;
+}
+
+form.search button {
+  background: skyblue;
+  color: black;
+  font-size: 15px;
+  border: 1px solid grey;
+  border-left: none;
+  padding: 10px;
+  height: 31.5px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+
+div.user-container button{
+	padding-top :5px;
+	margin-top :3.5px;
+}
+
+h3 {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right:15px;
+}
+
+
