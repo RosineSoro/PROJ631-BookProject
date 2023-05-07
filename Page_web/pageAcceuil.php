@@ -18,8 +18,20 @@
    </head> 
 
    <body>
+   	<div id="content">
+
+   	<?php
+			try
+			{
+				$db = new PDO('mysql:host=localhost;dbname=projet_livre;charset=utf8', 'root', '');
+			}
+			catch (Exception $e)
+			{
+			       die('erreur : ' . $e->getMessage());
+			}
+		?>
    
-        <div id="container">
+        <nav>
 		
         <h3>Titre</h3>   
         
@@ -42,6 +54,7 @@
 					<a href="#">Récents</a>
               </div>
         </div>
+
 		
 		<div class="user-container">
 		      <button type = "submit" name = "submitConnection">
@@ -49,8 +62,22 @@
 			  Se connecter
 			  </button>
          </div>
+      </nav>
 
+         <div id="caroussel">
+         	<?php 
+         	$sql ="select * from book Limit 10";
+         	$sqlexec = $db->prepare($sql);
+         	$sqlexec ->execute();
+         	$result = $sqlexec ->fetchAll();
+         	foreach ($result as $row ) {
+         		echo("<div class='book'><img src='".$row['img']."' class='book_cover'><br><h4 class='book_title'>".$row['title']."</h4><br></div>");
 
+         	}
+
+         		?>
+         </div>
+      </div>
    </body>
 
 
