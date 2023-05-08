@@ -18,12 +18,14 @@
    </head> 
 
    <body>
-   	<div id="content">
+   	<div id="content
+	
+	        <img src="logo\MouthfulReadersLogo.png" alt="Logo">
 
    	<?php
 			try
 			{
-				$db = new PDO('mysql:host=localhost;dbname=projet_livre;charset=utf8', 'root', '');
+				$db = new PDO('mysql:host=localhost;dbname=rosis;charset=utf8', 'root', '');
 			}
 			catch (Exception $e)
 			{
@@ -33,7 +35,9 @@
    
         <nav>
 		
-        <h3>Titre</h3>   
+
+		
+        <h3>MOUTHFUL Readers</h3>   
         
 		<div class="search-container">
 			  <form class="search" action="#" method="GET">

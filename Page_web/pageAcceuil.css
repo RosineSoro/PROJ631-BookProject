@@ -1,18 +1,50 @@
-body{
-	font-family: Noto Sans, sans-serif;
+body {
+  font-family: Noto Sans, sans-serif;
   text-align: right;	
   display: flex;
   justify-content: center;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  font-size: 100%;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url('logo/fond_ecran.jpg');
   background-size: cover;
-
+  opacity: 0.1;
+  z-index: -1;
 }
+
+img {
+  width: 10%; /* réduire la largeur de l'image à 10% */
+  height:10%;
+}
+
+h3 {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right:15px;
+  margin-top:0px;
+  font-family: 'Pacifico', cursive;
+  font-size: 3.5em;
+  font-style: italic;
+  color :rgb(139, 195, 74);
+}
+
 #content{
   width:1000px;
   display: grid;
   justify-content: center;
 
 }
+
 
 nav{
 	display:flex;
@@ -26,7 +58,7 @@ nav{
 }
 
 .dropbtn {
-  background-color:skyblue;
+  background-color:#8BC34A;
   color: white;
   padding: 16px;
   display: flex; 
@@ -37,6 +69,7 @@ nav{
   margin:15px;
   margin-top:15px;
   height: 10px;
+  margin-right :2px;
   
   
 }
@@ -67,11 +100,16 @@ nav{
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #0b7dda;}
+.dropdown:hover .dropbtn {background-color: #006400;}
+
+form.search button:hover {background-color: #006400}
 
 form.search {
   display: flex;
   align-items: center;
+  border-style: solid;
+  margin-left:5px;
+  margin-top:15px;
 }
 
 form.search input[type="text"] {
@@ -83,7 +121,7 @@ form.search input[type="text"] {
 }
 
 form.search button {
-  background: skyblue;
+  background: #8BC34A;
   color: black;
   font-size: 15px;
   border: 1px solid grey;
@@ -101,11 +139,8 @@ div.user-container button{
 	margin-top :3.5px;
 }
 
-h3 {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right:15px;
-}
+
+
 #caroussel{
   display: flex;
   flex-wrap: nowrap;
@@ -122,3 +157,12 @@ h3 {
   flex-direction: column;
   text-align: center;
 }
+
+/*body{
+  font-family: Noto Sans, sans-serif;
+  text-align: right;	
+  display: flex;
+  justify-content: center;
+  background-image: url('logo/fond_ecran.jpg');
+  background-size: cover;
+}*/
