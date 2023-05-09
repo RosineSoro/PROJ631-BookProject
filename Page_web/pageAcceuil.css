@@ -1,0 +1,170 @@
+body {
+  font-family: Noto Sans, sans-serif;
+  text-align: right;  
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  font-size: 100%;
+}
+
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('logo/fond_ecran.jpg');
+  background-size: cover;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+img {
+  width: 10%; /* réduire la largeur de l'image à 10% */
+  
+}
+
+h3 {
+  display: inline-block;
+  vertical-align: left;
+  margin-right:15px;
+  margin-top:0px;
+  font-family: 'Pacifico', cursive;
+  font-size: 3.5em;
+  font-style: italic;
+  color :rgb(139, 195, 74);
+}
+
+#content{
+  width:1000px;
+  display: grid;
+  justify-content: center;
+
+}
+
+
+nav{
+  display:flex;
+  flex-direction:row;
+  width : 100%;
+  padding: 20px;
+  margin: 25px auto;
+  justify-content: center;
+  align-items: center;
+    
+}
+
+.dropbtn {
+  background-color:#8BC34A;
+  color: white;
+  padding: 16px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  border: none;
+  margin:15px;
+  margin-top:15px;
+  height: 10px; 
+  /*margin-right :2px;*/
+  
+  
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #006400;}
+
+form.search button:hover {background-color: #006400}
+
+form.search {
+  display: flex;
+  align-items: center;
+  border-style: solid;
+  margin-left:5px;
+  /*
+  margin-top:15px;*/
+}
+
+form.search input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid grey;
+  border-right: none;
+  height: 10px;
+}
+
+form.search button {
+  background: #8BC34A;
+  color: black;
+  font-size: 15px;
+  border: 1px solid grey;
+  border-left: none;
+  padding: 10px;
+  height: 31.5px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+
+div.user-container button{
+  padding-top :5px;
+  margin-top :3.5px;
+}
+
+
+
+#caroussel{
+  display: flex;
+  flex-wrap: nowrap;
+  width:800px;
+  overflow-y: hidden;
+}
+
+.book_cover{
+  width : 200px;
+  margin: auto 20px auto 20px;
+}
+.book{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/*body{
+  font-family: Noto Sans, sans-serif;
+  text-align: right;  
+  display: flex;
+  justify-content: center;
+  background-image: url('logo/fond_ecran.jpg');
+  background-size: cover;
+}*/

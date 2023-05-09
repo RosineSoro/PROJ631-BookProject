@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-<?php
+
 <?php
 try
 {
@@ -24,7 +24,8 @@ catch (Exception $e)
 		if(isset($_POST['username']) and isset($_POST['user_email']) and isset($_POST['create_password']) and isset($_POST['verify_password'])){
 			if ($_POST['create_password'] == $_POST['verify_password']){
 				$hash = password_hash($_POST["password"], PASSWORD_DEFAULT)
-				$sql = "insert into account(username,password) values ";
+				$sql = "insert into account(username,password) values('". $_POST['username']."','". $_POST['create_password']"') ";
+				
 				
 			}
 			else{

@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS genre;
 CREATE TABLE genre (
 	id_genre int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
 	name varchar(40), 
-	description varchar(200)
+	description varchar(200) 
 );
 
 /** Table book **/
@@ -36,7 +36,9 @@ CREATE TABLE book (
 	id_book int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
 	title varchar(40), 
 	id_author int(10), 
-	img varchar(40), 
+	/* augmentait la taille du lien de l'image parceque si le lien vient de internet ça va être compliqué,
+	j'en ai besoin pour faire des tests*/
+	img varchar(255), 
 	id_genre int(10), 
 	plot varchar(200), 
 	sales int(10), 
