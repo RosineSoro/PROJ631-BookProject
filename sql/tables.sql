@@ -2,8 +2,7 @@
 
 DROP TABLE IF EXISTS account;
 CREATE TABLE account (
-	id_acc int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-	username varchar(40) NOT NULL, 
+	username varchar(40) PRIMARY KEY NOT NULL, 
 	description varchar(200), 
 	visibility varchar(20) NOT NULL DEFAULT 'private', 
 	password varchar(200) NOT NULL
@@ -51,9 +50,9 @@ CREATE TABLE book (
 
 DROP TABLE IF EXISTS review;
 CREATE TABLE review (id_review int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-	id_acc int(10), id_book int(10), rating int(10), 
+	username varchar(40), id_book int(10), rating int(10), 
 	content varchar(200), post_date datetime, 
-	CONSTRAINT lien_rev_acc FOREIGN KEY (id_acc) REFERENCES account(id_acc) ON DELETE RESTRICT ON UPDATE CASCADE, 
+	CONSTRAINT lien_rev_acc FOREIGN KEY (username) REFERENCES account(username) ON DELETE RESTRICT ON UPDATE CASCADE, 
 	CONSTRAINT lien_rev_book FOREIGN KEY (id_book) REFERENCES book(id_book) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -64,18 +63,18 @@ CREATE TABLE follow (
 	id_follower int(10), 
 	id_followed int(10), 
 	PRIMARY KEY (id_follower, id_followed),
-	CONSTRAINT fk_id_follower FOREIGN KEY (id_follower) REFERENCES account(id_acc) ON DELETE RESTRICT ON UPDATE CASCADE,
-	CONSTRAINT fk_id_followed FOREIGN KEY (id_followed) REFERENCES account(id_acc) ON DELETE RESTRICT ON UPDATE CASCADE
+	CONSTRAINT fk_id_follower FOREIGN KEY (id_follower) REFERENCES account(username) ON DELETE RESTRICT ON UPDATE CASCADE,
+	CONSTRAINT fk_id_followed FOREIGN KEY (id_followed) REFERENCES account(username) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 /** Table interest **/
 
 DROP TABLE IF EXISTS interest;
 CREATE TABLE interest (
-	id_acc int(10), 
+	username varchar(40), 
 	id_genre int(10), 
-	PRIMARY KEY(id_acc, id_genre), 
-	CONSTRAINT lien_interest_acc FOREIGN KEY (id_acc) REFERENCES account(id_acc) ON DELETE RESTRICT ON UPDATE CASCADE, 
+	PRIMARY KEY(username, id_genre), 
+	CONSTRAINT lien_interest_acc FOREIGN KEY (username) REFERENCES account(username) ON DELETE RESTRICT ON UPDATE CASCADE, 
 	CONSTRAINT lien_interest_genre FOREIGN KEY (id_genre) REFERENCES genre(id_genre) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -83,9 +82,9 @@ CREATE TABLE interest (
 
 DROP TABLE IF EXISTS want_read;
 CREATE TABLE want_read (
-	id_acc int(10), 
+	username varchar(40), 
 	id_book int(10), 
-	PRIMARY KEY(id_acc, id_book), 
-	CONSTRAINT lien_wr_acc FOREIGN KEY (id_acc) REFERENCES account(id_acc) ON DELETE RESTRICT ON UPDATE CASCADE, 
+	PRIMARY KEY(username, id_book), 
+	CONSTRAINT lien_wr_acc FOREIGN KEY (username) REFERENCES account(username) ON DELETE RESTRICT ON UPDATE CASCADE, 
 	CONSTRAINT lien_wr_book FOREIGN KEY (id_book) REFERENCES book(id_book) ON DELETE RESTRICT ON UPDATE CASCADE
 );
