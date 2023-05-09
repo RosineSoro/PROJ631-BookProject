@@ -7,14 +7,8 @@ CREATE TABLE account (
 	description varchar(200), 
 	visibility varchar(20) NOT NULL DEFAULT 'private', 
 	password varchar(200) NOT NULL
-);
-
-/** Table _user **/
-
-DROP TABLE IF EXISTS _user;
-CREATE TABLE _user (
-	id_user INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	CONSTRAINT fk_id_user FOREIGN KEY (id_user) REFERENCES account(id_acc) ON DELETE RESTRICT ON UPDATE CASCADE
+	id_author INT,
+	CONSTRAINT fk_id_author FOREIGN KEY (id_author) REFERENCES author(id_author) ON DELETE SET NULL ON UPDATE CASCADE	
 );
 
 /** Table author **/
@@ -22,7 +16,8 @@ CREATE TABLE _user (
 DROP TABLE IF EXISTS author;
 CREATE TABLE author (
 	id_author INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	CONSTRAINT fk_id_author FOREIGN KEY (id_author) REFERENCES account(id_acc) ON DELETE RESTRICT ON UPDATE CASCADE
+	name varchar(40) NOT NULL, 
+	description varchar(200)
 );
 
 /** Table genre **/
