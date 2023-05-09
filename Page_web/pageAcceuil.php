@@ -25,19 +25,19 @@
    	<?php
 			try
 			{
-				$db = new PDO('mysql:host=localhost;dbname=rosis;charset=utf8', 'root', '');
+				$db = new PDO('mysql:host=localhost;dbname=projet_livre;charset=utf8', 'root', '');
 			}
 			catch (Exception $e)
 			{
 			       die('erreur : ' . $e->getMessage());
 			}
 		?>
-   
+
+		<h3>MOUTHFUL Readers</h3>
+
         <nav>
 		
-
-		
-        <h3>MOUTHFUL Readers</h3>   
+      
         
 		<div class="search-container">
 			  <form class="search" action="#" method="GET">

@@ -1,6 +1,6 @@
 body {
   font-family: Noto Sans, sans-serif;
-  text-align: right;	
+  text-align: right;  
   display: flex;
   justify-content: center;
   position: relative;
@@ -8,6 +8,7 @@ body {
   width: 100%;
   font-size: 100%;
 }
+
 
 body::before {
   content: "";
@@ -24,12 +25,12 @@ body::before {
 
 img {
   width: 10%; /* réduire la largeur de l'image à 10% */
-  height:10%;
+  
 }
 
 h3 {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: left;
   margin-right:15px;
   margin-top:0px;
   font-family: 'Pacifico', cursive;
@@ -47,14 +48,14 @@ h3 {
 
 
 nav{
-	display:flex;
-	flex-direction:row;
-	width : 100%;
-	padding: 20px;
-	margin: 25px auto;
-	justify-content: center;
-	align-items: center;
-		
+  display:flex;
+  flex-direction:row;
+  width : 100%;
+  padding: 20px;
+  margin: 25px auto;
+  justify-content: center;
+  align-items: center;
+    
 }
 
 .dropbtn {
@@ -68,8 +69,8 @@ nav{
   border: none;
   margin:15px;
   margin-top:15px;
-  height: 10px;
-  margin-right :2px;
+  height: 10px; 
+  /*margin-right :2px;*/
   
   
 }
@@ -109,7 +110,8 @@ form.search {
   align-items: center;
   border-style: solid;
   margin-left:5px;
-  margin-top:15px;
+  /*
+  margin-top:15px;*/
 }
 
 form.search input[type="text"] {
@@ -135,8 +137,8 @@ form.search button {
 
 
 div.user-container button{
-	padding-top :5px;
-	margin-top :3.5px;
+  padding-top :5px;
+  margin-top :3.5px;
 }
 
 
@@ -160,7 +162,7 @@ div.user-container button{
 
 /*body{
   font-family: Noto Sans, sans-serif;
-  text-align: right;	
+  text-align: right;  
   display: flex;
   justify-content: center;
   background-image: url('logo/fond_ecran.jpg');
