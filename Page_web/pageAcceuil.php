@@ -32,18 +32,25 @@
 			       die('erreur : ' . $e->getMessage());
 			}
 		?>
+		<?php
+
+		if( !isset($_GET["page"]) ) { 
+        $page=0;
+      }else{
+        $page=$_GET["page"];
+
+      }
+      echo ("<h1>salut</h1>");
+      ?>
 
 		<h3>MOUTHFUL Readers</h3>
 
-        <nav>
-		
-      
-        
-		<div class="search-container">
+      <nav>
+			<div class="search-container">
 			  <form class="search" action="#" method="GET">
 				<input type="text" class="search-bar" placeholder="Titre,Thèmes,Livres,..." name="search">
 				<button type="submit" class="search-button" name="submitSearch"><i class="fa fa-search"></i></button>
-			  </form>	
+			  	</form>	
         </div>
 		
 		<div class="dropdown">
@@ -67,17 +74,22 @@
 			  </button>
          </div>
       </nav>
+	      <?php
+		      if( file_exists("page_".$page.".inc.php") ){ 
+		        include("page_".$page.".inc.php");
+	      }
+	    	?>
 
          <div id="caroussel">
          	<?php 
-         	$sql ="select * from book Limit 10";
-         	$sqlexec = $db->prepare($sql);
-         	$sqlexec ->execute();
-         	$result = $sqlexec ->fetchAll();
-         	foreach ($result as $row ) {
-         		echo("<div class='book'><img src='".$row['img']."' class='book_cover'><br><h4 class='book_title'>".$row['title']."</h4><br></div>");
+	         	$sql ="select * from book Limit 10";
+	         	$sqlexec = $db->prepare($sql);
+	         	$sqlexec ->execute();
+	         	$result = $sqlexec ->fetchAll();
+	         	foreach ($result as $row ) {
+	         		echo("<div class='book'><img src='".$row['img']."' class='book_cover'><br><h4 class='book_title'>".$row['title']."</h4><br></div>");
 
-         	}
+	         	}
 
          		?>
          </div>

@@ -18,12 +18,14 @@ body::before {
   right: 0;
   bottom: 0;
   background-image: url('logo/fond_ecran.jpg');
+  background-repeat: repeat;
   background-size: cover;
+  
   opacity: 0.1;
   z-index: -1;
 }
 
-img {
+.book_cover {
   width: 10%; /* réduire la largeur de l'image à 10% */
   
 }
@@ -110,8 +112,8 @@ form.search {
   align-items: center;
   border-style: solid;
   margin-left:5px;
-  /*
-  margin-top:15px;*/
+  
+  /*margin-top:15px;*/
 }
 
 form.search input[type="text"] {
