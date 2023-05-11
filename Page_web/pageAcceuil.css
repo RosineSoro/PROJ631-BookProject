@@ -19,21 +19,32 @@ body::before {
   bottom: 0;
   background-image: url('logo/fond_ecran.jpg');
   background-size: cover;
-  
   opacity: 0.1;
   z-index: -1;
 }
 
-.book_cover {
+#title-container{
+	display:flex;
+	flex-direction: row;
+	margin-left: 150px;
+	width : 90%;
+
+}
+
+img{
   width: 10%; /* réduire la largeur de l'image à 10% */
+  height : 10%
+  margin-top:0px;
+  
+  
   
 }
 
 h3 {
   display: inline-block;
-  vertical-align: left;
-  margin-right:15px;
-  margin-top:0px;
+  vertical-align: left; 
+  margin-top:35px;
+  margin-left:10px;
   font-family: 'Pacifico', cursive;
   font-size: 3.5em;
   font-style: italic;
@@ -53,7 +64,7 @@ nav{
   flex-direction:row;
   width : 100%;
   padding: 20px;
-  margin: 25px auto;
+  margin: 5px auto;
   justify-content: center;
   align-items: center;
     
@@ -71,7 +82,6 @@ nav{
   margin:15px;
   margin-top:15px;
   height: 10px; 
-  /*margin-right :2px;*/
   
   
 }
@@ -111,8 +121,7 @@ form.search {
   align-items: center;
   border-style: solid;
   margin-left:5px;
-  
-  /*margin-top:15px;*/
+
 }
 
 form.search input[type="text"] {
@@ -161,11 +170,3 @@ div.user-container button{
   text-align: center;
 }
 
-/*body{
-  font-family: Noto Sans, sans-serif;
-  text-align: right;  
-  display: flex;
-  justify-content: center;
-  background-image: url('logo/fond_ecran.jpg');
-  background-size: cover;
-}*/
