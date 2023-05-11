@@ -1,7 +1,7 @@
 <style></style>
 <?php 
    
-	$sql ="select * from book ";
+	$sql ="select * from book ORDER BY sales DESC";
 	$sqlexec = $db->prepare($sql);
 	$sqlexec ->execute();
 	$result = $sqlexec ->fetchAll();
