@@ -74,11 +74,7 @@
 			  </button>
          </div>
       </nav>
-	      <?php
-		      if( file_exists("page_".$page.".inc.php") ){ 
-		        include("page_".$page.".inc.php");
-	      }
-	    	?>
+	      
 
          <div id="caroussel">
          	<?php 

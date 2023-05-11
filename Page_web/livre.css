@@ -1,0 +1,13 @@
+#list_book {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: row;
+    margin: auto;
+}
+.a_book {
+	align-self: center;
+}
+.a_book h4{
+	text-align: center;
+}
