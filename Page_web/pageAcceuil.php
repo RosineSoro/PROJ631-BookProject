@@ -24,7 +24,7 @@
 			<?php
 					try
 					{
-						$db = new PDO('mysql:host=localhost;dbname=rosis;charset=utf8', 'root', '');
+						$db = new PDO('mysql:host=localhost;dbname=projet_livre;charset=utf8', 'root', '');
 					}
 					catch (Exception $e)
 					{
@@ -74,30 +74,7 @@
 					  </button>
 				 </div>
 		    </nav>
-		    <div id="caroussel">
-				<?php 
-				$sql ="select * from book Limit 10";
-				$sqlexec = $db->prepare($sql);
-				$sqlexec ->execute();
-				$result = $sqlexec ->fetchAll();
-				foreach ($result as $row ) {
-					echo("<div class='book'><img src='".$row['img']."' class='book_cover'><br><h4 class='book_title'>".$row['title']."</h4><br></div>");
-
-				}
-
-				?>
-		    </div>
-        </div>
-<<<<<<< HEAD
-
-		
-		<div class="user-container">
-		      <button type = "submit" name = "submitConnection">
-			  <i class="fa fa-user icon"></i>
-			  Se connecter
-			  </button>
-         </div>
-      </nav>
+		   
 	      
 
          <div id="caroussel">
@@ -114,8 +91,6 @@
          		?>
          </div>
       </div>
-=======
->>>>>>> f240f0480bfd8bb3dc4b952e0bd97af2b67a5b12
    </body>
 
 
