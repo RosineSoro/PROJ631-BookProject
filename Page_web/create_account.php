@@ -12,7 +12,9 @@
 <?php
 try
 {
-	$db = new PDO('mysql:host=localhost;dbname=projet_livre;charset=utf8', 'root', '');
+	$db = new PDO('mysql:host=localhost;dbname=proj631;charset=utf8', 'root', '');
+	$conn = @mysqli_connect("localhost", "root", "");    
+	mysqli_select_db($conn, "proj631"); 
 }
 catch (Exception $e)
 {
@@ -21,15 +23,15 @@ catch (Exception $e)
 ?>
 <?php
 	
-		if(isset($_POST['username']) and isset($_POST['user_email']) and isset($_POST['create_password']) and isset($_POST['verify_password'])){
+		if(isset($_POST['username']) and isset($_POST['create_password']) and isset($_POST['verify_password']) and isset($_POST['description'])){
 			if ($_POST['create_password'] == $_POST['verify_password']){
-				$hash = password_hash($_POST["password"], PASSWORD_DEFAULT)
-				$sql = "insert into account(username,password) values('". $_POST['username']."','". $_POST['create_password']"') ";
-				
-				
+				$hash = password_hash($_POST["create_password"], PASSWORD_DEFAULT);
+				$sql = "insert into account(username,password,description) values('". $_POST['username']."','".$hash."','".$_POST['description']."') ";
+				$result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
+				echo('bien ajouté !');
 			}
 			else{
-				echo('le mots de passe et la verification mots de passe ne correspondent pas');
+				echo('le mot de passe et la verification du mot de passe ne correspondent pas');
 			}
 			
 		}
@@ -38,14 +40,13 @@ catch (Exception $e)
 
 
 	<div id="connect">
-		<h4>Connexion</h4>
+		<h4>Création de compte</h4>
 		<form method="post" , id="form_connect">
 			<input type="text" placeholder="nom d'utilisateur" name="username">
-			<input type="email" place holder="email" name="user_emair">
 			<input type="password" placeholder="mot de passe" name="create_password">
 			<input type="password" placeholder="vérification de mot de passe" name="verify_password">
-
-			<button typr="submit">connexion</button>
+			<input type="text" placeholder="description" name="description">
+			<button typr="submit">créer</button>
 		</form>
 	</div>
 
