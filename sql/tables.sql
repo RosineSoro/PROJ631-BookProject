@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS account;
 CREATE TABLE account (
 	username varchar(40) PRIMARY KEY NOT NULL, 
 	description varchar(200), 
-	visibility varchar(20) NOT NULL DEFAULT 'private', 
+	visibility varchar(20) DEFAULT 'private', 
 	password varchar(200) NOT NULL,
 	id_author INT,
 	CONSTRAINT fk_id_author FOREIGN KEY (id_author) REFERENCES author(id_author) ON DELETE SET NULL ON UPDATE CASCADE	
