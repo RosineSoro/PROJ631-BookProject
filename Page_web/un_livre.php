@@ -15,8 +15,7 @@ function find_id_book()
     //echo($i ."<br>");
       }
     ++$i;
-    $bool = $i  <  mb_strlen($url, 'UTF-8') and $url[$i]!="/";
-    echo($bool."<br>");
+    
     while($i  <  mb_strlen($url, 'UTF-8') and $url[$i]!="/"){
       $id_li .= $url[$i];
 

@@ -37,31 +37,29 @@
 		        $page=0;
 		      }else{
 		        $page=$_GET["page"];
-		        echo ($page);
+		       
 
 		      }
 	    ?>
 
 		<h3>MOUTHFUL Readers</h3>
 
-        <nav>
-		
-      
-        
-			<div class="search-container">
-				<form class="search" action="#" method="GET">
-					<input type="text" class="search-bar" placeholder="Titre,Thèmes,Livres,..." name="search">
-					<button type="submit" class="search-button" name="submitSearch"><i class="fa fa-search"></i></button>
-				</form>	
-			</div>
+		<nav>
 			
-			<div class="dropdown">
-				<button class="dropbtn">
-					<span>Découvrir </span>
-					<i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<?php
+				<div class="search-container">
+					  <form class="search" action="#" method="GET">
+						<input type="text" class="search-bar" placeholder="Titre,Thèmes,Livres,..." name="search">
+						<button type="submit" class="search-button" name="submitSearch"><i class="fa fa-search"></i></button>
+					  </form>	
+				</div>
+				
+				<div class="dropdown">
+					  <button class="dropbtn">
+						 <span>Découvrir </span>
+						 <i class="fa fa-caret-down"></i>
+					  </button>
+					  <div class="dropdown-content">
+							<?php
 
 						if( !isset($_GET["page"]) ) { 
 							$page=0;
@@ -74,18 +72,20 @@
 							echo("<a href=\"#\">Thèmes</a>\n");
 							echo("<a href=\"#\">Tendance</a>\n");
 							echo("<a href=\"#\">Récents</a>\n");
-					echo("</div>");
 					?>
-			</div>
+					  </div>
+				</div>
 
-			
-			<div class="user-container">
-				<button type = "submit" name = "submitConnection">
-				<i class="fa fa-user icon"></i>
-				Se connecter
-				</button>
-			</div>
-      </nav>
+				<div class="user-container">
+					  <button type = "submit" name = "submitConnection">
+					  <i class="fa fa-user icon"></i>
+					  Se connecter
+					  </button>
+				 </div>
+		    </nav>
+		   
+
+        
 	    	<?php
 			// quand un fichier nommé de la même façon que la valeur donné à page je l'inclus
 				if( file_exists($page.".php") ){ 
