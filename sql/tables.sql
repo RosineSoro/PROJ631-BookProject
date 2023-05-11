@@ -6,7 +6,7 @@ CREATE TABLE account (
 	description varchar(200), 
 	visibility varchar(20) DEFAULT 'private', 
 	password varchar(200) NOT NULL,
-	id_author INT,
+	id_author INT DEFAULT -1,
 	CONSTRAINT fk_id_author FOREIGN KEY (id_author) REFERENCES author(id_author) ON DELETE SET NULL ON UPDATE CASCADE	
 );
 
@@ -16,6 +16,7 @@ DROP TABLE IF EXISTS author;
 CREATE TABLE author (
 	id_author INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	name varchar(40) NOT NULL, 
+	birthDate varchar(10),
 	description varchar(200)
 );
 
@@ -34,13 +35,11 @@ CREATE TABLE book (
 	id_book varchar(40) PRIMARY KEY NOT NULL, 
 	title varchar(40), 
 	id_author INT, 
-	/* augmentait la taille du lien de l'image parceque si le lien vient de internet ça va être compliqué,
-	j'en ai besoin pour faire des tests*/
 	img varchar(255), 
 	id_genre varchar(40), 
 	plot varchar(200), 
 	sales int(10), 
-	rdate datetime, 
+	rdate varchar(10), 
 	CONSTRAINT lien_book_genre FOREIGN KEY (id_genre) REFERENCES genre(id_genre) ON DELETE RESTRICT ON UPDATE CASCADE, 
 	CONSTRAINT lien_book_author FOREIGN KEY (id_author) REFERENCES author(id_author) ON DELETE RESTRICT ON UPDATE CASCADE
 );
