@@ -25,7 +25,7 @@
 	   	<?php
 				try
 				{
-					$db = new PDO('mysql:host=localhost;dbname=projet_livre;charset=utf8', 'root', '');
+					$db = new PDO('mysql:host=localhost;dbname=rosis;charset=utf8', 'root', '');
 				}
 				catch (Exception $e)
 				{
@@ -37,7 +37,6 @@
 		        $page=0;
 		      }else{
 		        $page=$_GET["page"];
-		        echo ($page);
 
 		      }
 	    ?>
@@ -72,7 +71,7 @@
 
 							echo("<a href=\"?page=livre\">Livres</a>\n");
 							echo("<a href=\"#\">Thèmes</a>\n");
-							echo("<a href=\"#\">Tendance</a>\n");
+							echo("<a href=\"?page=trend/livre\">Tendance</a>\n");
 							echo("<a href=\"#\">Récents</a>\n");
 					echo("</div>");
 					?>
@@ -91,6 +90,9 @@
 				if( file_exists($page.".php") ){ 
 
 						include($page.".php");
+				}
+				else if(str_contains($page, "trend")){
+					include("trend.php");
 				}
 				//si ce fichier n'existe pas alors on inclus le fichier php un livre qui est la page de chacun des livre si le nom de la page contient "livre"
 				else if(str_contains($page, "livre")){
