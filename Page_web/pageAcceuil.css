@@ -171,3 +171,13 @@ div.user-container button{
   text-align: center;
 }
 
+#conection {
+  display: none;
+  position: fixed;
+  width: 500px;
+}
+ 
+#conection:target {
+  display: block;
+}
+

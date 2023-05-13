@@ -24,7 +24,7 @@
 			<?php
 					try
 					{
-						$db = new PDO('mysql:host=localhost;dbname=rosis;charset=utf8', 'root', '');
+						$db = new PDO('mysql:host=localhost;dbname=projet_livre;charset=utf8', 'root', '');
 					}
 					catch (Exception $e)
 					{

@@ -25,7 +25,7 @@
 	   	<?php
 				try
 				{
-					$db = new PDO('mysql:host=localhost;dbname=rosis;charset=utf8', 'root', '');
+					$db = new PDO('mysql:host=localhost;dbname=projet_livre;charset=utf8', 'root', '');
 				}
 				catch (Exception $e)
 				{
@@ -77,15 +77,17 @@
 					?>
 			</div>
 
-			
+			// 
 			<div class="user-container">
 				<button type = "submit" name = "submitConnection">
 				<i class="fa fa-user icon"></i>
 				Se connecter
 				</button>
 			</div>
+			
       </nav>
 	    	<?php
+
 			// quand un fichier nommé de la même façon que la valeur donné à page je l'inclus
 				if( file_exists($page.".php") ){ 
 
