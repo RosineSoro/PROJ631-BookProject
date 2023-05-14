@@ -1,4 +1,9 @@
-
+<!DOCTYPE html>
+<html>
+    <head>
+       <link rel="stylesheet"  href="un_livre.css">
+	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
 
 <?php
 function find_id_book()
@@ -15,7 +20,8 @@ function find_id_book()
     //echo($i ."<br>");
       }
     ++$i;
-    
+    $bool = $i  <  mb_strlen($url, 'UTF-8') and $url[$i]!="/";
+    echo($bool."<br>");
     while($i  <  mb_strlen($url, 'UTF-8') and $url[$i]!="/"){
       $id_li .= $url[$i];
 
@@ -38,8 +44,22 @@ function find_id_book()
   $sqlexec -> execute();
   $result = $sqlexec -> fetchAll();
   foreach($result as $row){
-    echo("<img src=\"". $row['img']."\" class=book_cover> <h1>".$row['title']."</h1> ");
+    echo("<div class='book-info'>");
+    echo("<img src=\"". $row['img']."\" class='book_cover'>");
+    echo("<div class='book-details'>");
+    echo("<h1>".$row['title']."</h1> ");
+    echo("<p>".$row['plot']."</p>");
+    echo("<div class='book-comments'>");
+    echo '<form class="comments" action="#" method="GET">';
+	echo '<input type="text" class="comment-bar" placeholder="Laissez un commentaire" name="comment">';
+	echo '<button type="submit" class="comment-submit-button" name="submitComment">'."Envoyer".'</button>';
+	echo '</form>';
+	echo '<button type="submit" class="comment-print-button" name="printComment">'."Afficher les commentaires".'</button>';
+    echo("</div>");
+    echo("</div>");
   }
-
     
 ?>
+
+</html>
+ <!--code pour les genres : SELECT * FROM book b JOIN genre g ON b.id_genre = g.id_genre GROUP BY name-->

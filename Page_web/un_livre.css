@@ -1,0 +1,59 @@
+
+.book-info {
+  display: flex;
+  float:left;
+  
+}
+
+.book-details {
+  display : flex;
+  flex-direction:column;
+  margin-left :25px;
+  text-align: left;
+  
+}
+
+p{  
+    margin-top:5px;
+	width : 400px;
+	height:100%
+	
+}
+
+
+.book-comments {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+form.comments input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid grey;
+  height: 10px;
+  margin-right: 10px;
+}
+
+form.comments button {
+  flex: 1;
+  background: #8BC34A;
+  color: black;
+  font-size: 15px;
+  border: 1px solid grey;
+  
+ 
+}
+
+button.comment-print-button {
+  background: #8BC34A;
+  color: black;
+  font-size: 15px;
+  border: 1px solid grey;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
