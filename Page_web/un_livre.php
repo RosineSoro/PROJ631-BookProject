@@ -29,37 +29,59 @@ function find_id_book()
     }
     return $id_li;
 
-}
-?>
+} ?>
 
 
 
 
-<?php 
+  <?php 
 
-  $id_li = find_id_book();
-  $url ="";
-  $sql = "select * from book where id_book=". $id_li;
-  $sqlexec = $db ->prepare($sql);
-  $sqlexec -> execute();
-  $result = $sqlexec -> fetchAll();
-  foreach($result as $row){
-    echo("<div class='book-info'>");
-    echo("<img src=\"". $row['img']."\" class='book_cover'>");
-    echo("<div class='book-details'>");
-    echo("<h1>".$row['title']."</h1> ");
-    echo("<p>".$row['plot']."</p>");
-    echo("<div class='book-comments'>");
-    echo '<form class="comments" action="#" method="GET">';
-	echo '<input type="text" class="comment-bar" placeholder="Laissez un commentaire" name="comment">';
-	echo '<button type="submit" class="comment-submit-button" name="submitComment">'."Envoyer".'</button>';
-	echo '</form>';
-	echo '<button type="submit" class="comment-print-button" name="printComment">'."Afficher les commentaires".'</button>';
-    echo("</div>");
-    echo("</div>");
-  }
+    $id_li = find_id_book();
+    $url ="";
+    $sql = "select * from book where id_book=". $id_li;
+    $sqlexec = $db ->prepare($sql);
+    $sqlexec -> execute();
+    $result = $sqlexec -> fetchAll();
+    foreach($result as $row){
+      echo("<div class='book-info'>");
+      echo("<img src=\"". $row['img']."\" class='book_cover'>");
+      echo("<div class='book-details'>");
+      echo("<h1>".$row['title']."</h1> ");
+      echo("<p>".$row['plot']."</p>");
+      
+    }
     
-?>
+  ?>
 
-</html>
+  <?php
+  /* ajouter un commentaire dans la bdd format heure YYYY-MM-DD hh:mm:ss*/ 
+  if (isset($_POST['comment'])){
+    $today = date("Y-m-d H:i:s");
+    if(isset($_SESSION['id_user'])){
+      echo($_SESSION['id_user']);
+      $sql2="insert into review(id_acc,id_book,content,post_date) values(".$_SESSION['id_user'].",".$id_li.",'".$_POST['comment']."','".$today."')";
+      
+      $sqlexec2 = $db -> prepare($sql2);
+      $sqlexec2 -> execute();
+    }
+    else{
+      echo("veuillez vous connecter");
+    }
+  }
+  else{
+    echo("fonctionne pas");
+  }
+  
+  ?>
+
+<div class='book-comments'>
+
+<form class="comments" action="" method="post">
+  <textarea name="comment" class="comment-bar" placeholder="Laissez un commentaire"> </textarea>
+  <button type ="submit"class="comment-submit-button">Envoyer</button>
+</form>
+<button type="submit" class="comment-print-button" name="printComment">Afficher les commentaires</button>
+</div>
+</div>
+
  <!--code pour les genres : SELECT * FROM book b JOIN genre g ON b.id_genre = g.id_genre GROUP BY name-->

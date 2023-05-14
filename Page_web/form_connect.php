@@ -1,52 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet"  href="form_connect.css">
-	<title>Page de connexion</title><i class="fas fa-search"></i>
-</head>
-<body>
+<style> <?php include("form_connect.css");?> </style>
 
-	<?php
-try
-{
-	$db = new PDO('mysql:host=localhost;dbname=rosis;charset=utf8', 'root', '');
-}
-catch (Exception $e)
-{
-       die('erreur : ' . $e->getMessage());
-}
-?>
 
 <?php
-	
-		if(isset($_POST['user']) and isset($_POST['password'])){
-			$hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
-			$sql = "select username,password from account where user = '".$_POST['user'] ."' and password ='". $hash ."'";
-			echo("<h1>".$hash."</h1>");
+	$verif = "";
+		if(isset($_POST['user']) and isset($_POST['password']) and $_POST['user']!="" and $_POST['password']!=""){
+			
+			
+			
+
+			$hash = md5($_POST["password"]);
+			echo($hash);
+			$sql = "select * from account where username = '".$_POST['user'] ."' and password ='". $hash ."'";
+			$sqlexec = $db ->prepare($sql);
+            $sqlexec ->execute();
+            if($result = $sqlexec ->fetch()){
+				$_SESSION['username'] = $_POST['user'];
+				echo($_SESSION["username"]);
+				$_SESSION['id_user']= $result['id_acc'];
+				$verif="";
+				/*header('Location: http://localhost/Page_web/Base_page.php');*/
+			}
+			else{
+				$verif = "nom d'utilisateur ou mot de passe incorrect";
+			}
 		}
+		else{
+			$verif="veuillez renseigner tous les champs";
+		}
+		
 
 	?>
 
 	<div id="content">
 	
-		<h1>Titre</h1>
-		<a href="https://openclassrooms.com/fr/"><img src="logo/logo_connexion.jpg" alt="petit bonhomme de connection"></a>
+		<img src="logo/logo_connexion.jpg" alt="petit bonhomme de connection" id="img_log">
 		
 		<div id="connect">
 			<h4>Connexion</h4>
-			<form method="post" action="http://localhost/Page_web/form_connect.php" id="form_connect">
+			<?php echo("<span>".$verif."</span>");?>
+			<form method="post" action="http://localhost/Page_web/Base_page.php?page=connect/" id="form_connect">
 				<input type="text" placeholder="nom d'utilisateur" name="user">
 				<input type="password" placeholder="mot de passe" name="password">
 				<button type="submit">connexion</button>
 			</form>
 		</div>
 		
-		<a id="create_account" href="creer_un_compte.html">Créer un compte</a>
+		<a id="create_account" href="?page=create_account">Créer un compte</a>
 	</div>
 
-
-
-</body>
-</html>

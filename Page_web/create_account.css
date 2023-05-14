@@ -1,0 +1,27 @@
+#form_connect input{
+    border-radius: 10px;
+    margin: 3px 0px 3px 0px;
+    width: 150px;
+    height: 25px;
+}
+
+#form_connect button{
+    height: 25px;  
+    width: 50px;
+    margin-left: 60px;
+}
+
+#connect {
+    
+    width: 200px;
+	margin-left: auto;
+	margin-right : auto;
+}
+#connect form {
+    display: flex;
+	flex-direction: column;
+}
+
+#connect span{
+    color: red;
+}

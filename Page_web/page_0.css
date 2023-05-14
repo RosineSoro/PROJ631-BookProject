@@ -1,0 +1,6 @@
+#caroussel{
+    display: flex;
+    flex-wrap: nowrap;
+    width:800px;
+    overflow-y: hidden;
+  }

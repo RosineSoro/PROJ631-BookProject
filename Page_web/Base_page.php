@@ -1,3 +1,8 @@
+<?php 
+	session_start();
+
+?>
+
 <!DOCTYPE html>
 
 
@@ -18,9 +23,7 @@
    </head> 
 
    <body>
-   	<div id="content
-	
-	        <img src="logo\MouthfulReadersLogo.png" alt="Logo">
+   	<div id="content">
 
 	   	<?php
 				try
@@ -41,7 +44,12 @@
 		      }
 	    ?>
 
-		<h3>MOUTHFUL Readers</h3>
+			<div id ="title-container">  
+			  	<a href="Base_page.php">
+					<img src="logo\MouthfulReadersLogo.png" alt="Logo">
+					<h3>MOUTHFUL Readers</h3>
+				</a>
+			</div>	
 
         <nav>
 		
@@ -70,19 +78,19 @@
 						//on défintit la une variable accessible par $_GET nommé page qui donnera le nom à l'url
 
 							echo("<a href=\"?page=livre\">Livres</a>\n");
-							echo("<a href=\"#\">Thèmes</a>\n");
+							echo("<a href=\"?page=genre\">Genre</a>\n");
 							echo("<a href=\"?page=trend/livre\">Tendance</a>\n");
 							echo("<a href=\"#\">Récents</a>\n");
 					echo("</div>");
 					?>
 			</div>
 
-			// 
+			
 			<div class="user-container">
-				<button type = "submit" name = "submitConnection">
+				<?php echo("<a href=\"?page=connect/\">")?>				
 				<i class="fa fa-user icon"></i>
 				Se connecter
-				</button>
+				</a>
 			</div>
 			
       </nav>
@@ -93,6 +101,10 @@
 
 						include($page.".php");
 				}
+				else if(str_contains($page, "connect")){
+					include("form_connect.php");
+				}
+				
 				else if(str_contains($page, "trend")){
 					include("trend.php");
 				}

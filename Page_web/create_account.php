@@ -1,34 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="create_account.css">
-	<title>créer un compte</title>
-</head>
-<body>
-	
 
-<?php
-try
-{
-	$db = new PDO('mysql:host=localhost;dbname=proj631;charset=utf8', 'root', '');
-	$conn = @mysqli_connect("localhost", "root", "");    
-	mysqli_select_db($conn, "proj631"); 
-}
-catch (Exception $e)
-{
-       die('erreur : ' . $e->getMessage());
-}
-?>
+	
+<style>
+	<?php include("create_account.css"); ?>
+</style>
 <?php
 	
 		if(isset($_POST['username']) and isset($_POST['create_password']) and isset($_POST['verify_password']) and isset($_POST['description'])){
 			if ($_POST['create_password'] == $_POST['verify_password']){
-				$hash = password_hash($_POST["create_password"], PASSWORD_DEFAULT);
+				$hash = md5($_POST["create_password"]);
 				$sql = "insert into account(username,password,description) values('". $_POST['username']."','".$hash."','".$_POST['description']."') ";
-				$result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
-				echo('bien ajouté !');
+				$sqlexec = $db ->prepare($sql);
+            	$sqlexec ->execute();
+				header("http://localhost/Page_web/Base_page.php?page=connect/");
 			}
 			else{
 				echo('le mot de passe et la verification du mot de passe ne correspondent pas');
@@ -49,6 +32,3 @@ catch (Exception $e)
 			<button typr="submit">créer</button>
 		</form>
 	</div>
-
-</body>
-</html>

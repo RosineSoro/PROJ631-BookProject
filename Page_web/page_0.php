@@ -1,4 +1,4 @@
-<p>bjr</p>
+<style><?php include("page_0.css");?> </style>
 
 <div id="caroussel">
          	<?php 

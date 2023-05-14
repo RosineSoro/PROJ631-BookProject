@@ -6,7 +6,7 @@ CREATE TABLE account (
 	description varchar(200), 
 	visibility varchar(20) DEFAULT 'private', 
 	password varchar(200) NOT NULL,
-	id_author INT DEFAULT NULL,
+	id_author INT DEFAULT -1,
 	CONSTRAINT fk_id_author FOREIGN KEY (id_author) REFERENCES author(id_author) ON DELETE SET NULL ON UPDATE CASCADE	
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE book (
 	id_author INT, 
 	img varchar(255), 
 	id_genre varchar(40), 
-	plot varchar(200), 
+	plot varchar(20000), 
 	sales int(10), 
 	rdate varchar(10), 
 	CONSTRAINT lien_book_genre FOREIGN KEY (id_genre) REFERENCES genre(id_genre) ON DELETE RESTRICT ON UPDATE CASCADE, 
@@ -52,8 +52,8 @@ CREATE TABLE review (
 	username varchar(40), 
 	id_book varchar(40), 
 	rating int(10), 
-	content varchar(200), 
-	post_date varchar(12), 
+	content varchar(20000), 
+	post_date datetime, 
 	CONSTRAINT lien_rev_acc FOREIGN KEY (username) REFERENCES account(username) ON DELETE RESTRICT ON UPDATE CASCADE, 
 	CONSTRAINT lien_rev_book FOREIGN KEY (id_book) REFERENCES book(id_book) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -89,14 +89,4 @@ CREATE TABLE want_read (
 	PRIMARY KEY(username, id_book), 
 	CONSTRAINT fk_wr__acc_username FOREIGN KEY (username) REFERENCES account(username) ON DELETE RESTRICT ON UPDATE CASCADE, 
 	CONSTRAINT fk_wr_book_id FOREIGN KEY (id_book) REFERENCES book(id_book) ON DELETE RESTRICT ON UPDATE CASCADE
-);
-
-DROP TABLE IF EXISTS current_lectures;
-CREATE TABLE current_lectures (
-	username varchar(40), 
-	id_book varchar(40), 
-	page int,
-	PRIMARY KEY(username, id_book), 
-	CONSTRAINT fk_cl__acc_username FOREIGN KEY (username) REFERENCES account(username) ON DELETE RESTRICT ON UPDATE CASCADE, 
-	CONSTRAINT fk_cl_book_id FOREIGN KEY (id_book) REFERENCES book(id_book) ON DELETE RESTRICT ON UPDATE CASCADE
 );

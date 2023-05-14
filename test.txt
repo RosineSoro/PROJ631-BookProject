@@ -1,0 +1,166 @@
+diff --git a/Page_web/Base_page.php b/Page_web/Base_page.php
+index 5142040..2bdca56 100644
+--- a/Page_web/Base_page.php
++++ b/Page_web/Base_page.php
+@@ -25,7 +25,7 @@
+ 	   	<?php
+ 				try
+ 				{
+-					$db = new PDO('mysql:host=localhost;dbname=rosis;charset=utf8', 'root', '');
++					$db = new PDO('mysql:host=localhost;dbname=projet_livre;charset=utf8', 'root', '');
+ 				}
+ 				catch (Exception $e)
+ 				{
+@@ -77,15 +77,17 @@
+ 					?>
+ 			</div>
+ 
+-			
++			// 
+ 			<div class="user-container">
+ 				<button type = "submit" name = "submitConnection">
+ 				<i class="fa fa-user icon"></i>
+ 				Se connecter
+ 				</button>
+ 			</div>
++			
+       </nav>
+ 	    	<?php
++
+ 			// quand un fichier nommé de la même façon que la valeur donné à page je l'inclus
+ 				if( file_exists($page.".php") ){ 
+ 
+diff --git a/Page_web/livre.css b/Page_web/livre.css
+index f750747..2e463cf 100644
+--- a/Page_web/livre.css
++++ b/Page_web/livre.css
+@@ -4,10 +4,18 @@
+     align-items: center;
+     flex-direction: row;
+     margin: auto;
++    width: 1000px;
+ }
+ .a_book {
+-	align-self: center;
++	align-items: center;
++	width:200px;
++	margin: 2%;
+ }
+ .a_book h4{
+ 	text-align: center;
+ }
++.book_cover{
++	height: 300px;
++}
++
++
+diff --git a/Page_web/livre.php b/Page_web/livre.php
+index 9fbd98b..4d6d519 100644
+--- a/Page_web/livre.php
++++ b/Page_web/livre.php
+@@ -1,14 +1,17 @@
+-<style></style>
++<style>
++	<?php include("livre.css"); ?>
++</style>
++<div id="list_book">
+ <?php 
+    
+ 	$sql ="select * from book ";
+ 	$sqlexec = $db->prepare($sql);
+ 	$sqlexec ->execute();
+ 	$result = $sqlexec ->fetchAll();
+-	echo('<div id=list_book">');
+ 	foreach ($result as $row ) {
+-		echo("<div class='a_book'> <a href=\"?page=livre/". $row['id_book'] ."\"><img src='".$row['img']."' class='book_cover'><br><h4 class='book_title'>".$row['title']."</h4><br></a></div>");
++		echo("<div class='a_book'> <a href=\"?page=livre/". $row['id_book'] ."\"><img src='".$row['img']."' class='book_cover'><h4 class='book_title'>".$row['title']."</h4></a></div>");
+ 
+ 	}
+-	echo("</div>");
+-?>
+\ No newline at end of file
++	
++?>
++</div>
+\ No newline at end of file
+diff --git a/Page_web/pageAcceuil.css b/Page_web/pageAcceuil.css
+index b929ffb..1f39b4e 100644
+--- a/Page_web/pageAcceuil.css
++++ b/Page_web/pageAcceuil.css
+@@ -171,3 +171,13 @@ div.user-container button{
+   text-align: center;
+ }
+ 
++#conection {
++  display: none;
++  position: fixed;
++  width: 500px;
++}
++ 
++#conection:target {
++  display: block;
++}
++
+diff --git a/Page_web/pageAcceuil.php b/Page_web/pageAcceuil.php
+index 2e39915..329ee90 100644
+--- a/Page_web/pageAcceuil.php
++++ b/Page_web/pageAcceuil.php
+@@ -24,7 +24,7 @@
+ 			<?php
+ 					try
+ 					{
+-						$db = new PDO('mysql:host=localhost;dbname=rosis;charset=utf8', 'root', '');
++						$db = new PDO('mysql:host=localhost;dbname=projet_livre;charset=utf8', 'root', '');
+ 					}
+ 					catch (Exception $e)
+ 					{
+diff --git a/Page_web/trend.php b/Page_web/trend.php
+index a508bec..ee25254 100644
+--- a/Page_web/trend.php
++++ b/Page_web/trend.php
+@@ -1,14 +1,16 @@
+-<style></style>
++<style>
++	<?php include("livre.css");?>
++</style>
++<div id="list_book">
+ <?php 
+    
+ 	$sql ="select * from book ORDER BY sales DESC";
+ 	$sqlexec = $db->prepare($sql);
+ 	$sqlexec ->execute();
+ 	$result = $sqlexec ->fetchAll();
+-	echo('<div id=list_book">');
+ 	foreach ($result as $row ) {
+-		echo("<div class='a_book'> <a href=\"?page=livre/". $row['id_book'] ."\"><img src='".$row['img']."' class='book_cover'><br><h4 class='book_title'>".$row['title']."</h4><br></a></div>");
++		echo("<div class='a_book'> <a href=\"?page=livre/". $row['id_book'] ."\"><img src='".$row['img']."' class='book_cover'><h4 class='book_title'>".$row['title']."</h4></a></div>");
+ 
+ 	}
+-	echo("</div>");
+-?>
+\ No newline at end of file
++?>
++</div>
+\ No newline at end of file
+diff --git a/sql/tables.sql b/sql/tables.sql
+index fa81640..015b8b9 100644
+--- a/sql/tables.sql
++++ b/sql/tables.sql
+@@ -37,7 +37,7 @@ CREATE TABLE book (
+ 	id_author INT, 
+ 	img varchar(255), 
+ 	id_genre varchar(40), 
+-	plot varchar(200), 
++	plot varchar(20000), 
+ 	sales int(10), 
+ 	rdate varchar(10), 
+ 	CONSTRAINT lien_book_genre FOREIGN KEY (id_genre) REFERENCES genre(id_genre) ON DELETE RESTRICT ON UPDATE CASCADE, 
+@@ -52,7 +52,7 @@ CREATE TABLE review (
+ 	username varchar(40), 
+ 	id_book varchar(40), 
+ 	rating int(10), 
+-	content varchar(200), 
++	content varchar(20000), 
+ 	post_date datetime, 
+ 	CONSTRAINT lien_rev_acc FOREIGN KEY (username) REFERENCES account(username) ON DELETE RESTRICT ON UPDATE CASCADE, 
+ 	CONSTRAINT lien_rev_book FOREIGN KEY (id_book) REFERENCES book(id_book) ON DELETE RESTRICT ON UPDATE CASCADE
